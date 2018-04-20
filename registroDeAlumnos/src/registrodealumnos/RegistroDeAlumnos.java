@@ -1,8 +1,8 @@
 
 package registrodealumnos;
 
-import com.sun.javafx.collections.ArrayListenerHelper;
-import java.util.ArrayList;
+
+import java.util.*;
 import java.util.Random;
 
 
@@ -25,7 +25,6 @@ public class RegistroDeAlumnos {
         ArrayList <persona> registroPresentes = new ArrayList <>();
         ArrayList <persona> registroAusente = new ArrayList <>();
         Random rand=new Random();
-        int tam;
         int indice1=0;
         int indice2=0;
         int indice3=0;
@@ -49,9 +48,7 @@ public class RegistroDeAlumnos {
                 registroAusente.add(registrada);
             }
         }
-        tam=registroPresentes.size();
-        persona[]presentes=new persona[tam];
-        tam=0;
+        
         System.out.println("los alumnos presentes son:");
         for(persona reg : registroPresentes){
             System.out.println(reg.getApellido()+" "+reg.getNombre());
@@ -62,23 +59,31 @@ public class RegistroDeAlumnos {
             System.out.println(regi.getApellido()+" "+regi.getNombre());
         }
         
-        for(persona regis :registroPresentes){
-            presentes[1]=regis;
-            tam++;
-        }
-        System.out.println("-------------------------------------------");
-        for(int i=0; i<(presentes.length); i+=2){
-            indice1=rand.nextInt(presentes.length-1);
-            indice2=rand.nextInt(presentes.length-1);
-            if(presentes.length%2!=0&& i==presentes.length-4){
-                indice3=rand.nextInt(presentes.length-1);
-                System.out.println(presentes[indice1].getApellido()+" "+presentes[indice1].getNombre()+" con "+ presentes[indice2].getApellido()+" "+presentes[indice2].getNombre()+" y "+presentes[indice3].getApellido()+" "+presentes[indice3].getNombre());
-            }
-            else{                
-                System.out.println(presentes[indice1].getApellido()+" "+presentes[indice1].getNombre()+" con "+ presentes[indice2].getApellido()+" "+presentes[indice2].getNombre());
-                }
-        }
         
+        System.out.println("-------------------------------------------");
+        System.out.println(registroPresentes);
+        
+        for(int i=0;i<(registroPresentes.size()/2);i++){
+            indice1=rand.nextInt();
+            indice2=rand.nextInt();
+            if(registroPresentes.size()%2!=0){
+                if(i<(registroPresentes.size()-4)){
+                    System.out.println(registroPresentes.get(indice1)+" con "+registroPresentes.get(indice2));
+                    registroPresentes.remove(indice1);
+                    registroPresentes.remove(indice2);
+                }else{
+                    indice3=rand.nextInt();
+                    System.out.println(registroPresentes.get(indice1)+" con "+registroPresentes.get(indice2)+" y "+registroPresentes.get(indice3));
+                    registroPresentes.remove(indice1);
+                    registroPresentes.remove(indice2);
+                    registroPresentes.remove(indice3);
+                }
+            }else{
+                System.out.println(registroPresentes.get(indice1)+" con "+registroPresentes.get(indice2));
+                registroPresentes.remove(indice1);
+                registroPresentes.remove(indice2);
+            }
+        }
     }
     
 }
