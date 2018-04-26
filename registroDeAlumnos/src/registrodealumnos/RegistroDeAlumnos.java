@@ -12,10 +12,10 @@ public class RegistroDeAlumnos {
     Scanner scan =new Scanner(System.in);
     int opcion;
     do{
-        menuEscolar.mostrarMenu();
+        menuEscolar.mostrarMenuPrincipal();
         do{
             opcion=scan.nextInt();
-        }while(opcion<3&&opcion>=0);    
+        }while(opcion>3&&opcion<0);    
         menuEscolar.ejecucion(opcion);
     }while(opcion!=0);
     
