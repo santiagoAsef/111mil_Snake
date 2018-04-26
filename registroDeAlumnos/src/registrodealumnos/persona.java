@@ -2,7 +2,7 @@
 package registrodealumnos;
 
 
-public class persona {
+public abstract class persona implements AccionesMinimas{
     private String nombre;
     private String apellido;
     private boolean presencia;
@@ -35,6 +35,16 @@ public class persona {
 
     public void setPresencia(boolean presencia) {
         this.presencia = presencia;
+    }
+
+    
+    public void respirar() {
+        System.out.println("las personas deben respirar para vivir");
+    }
+
+    
+    public void caminar() {
+        System.out.println("caminar es saludable");
     }
     
     
